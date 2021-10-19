@@ -77,23 +77,17 @@ int PNG() {
         exit (2);
     }
     strcpy(env_value, save_env);    /* save environment variable */
-    log(std::string() + "F:/NL_TILE_MAP/" + env_value + " -->> ");
+    log(std::string() + env_value + "\n");
 
     FILE * pFile;
     long lSize;
     char * buffer;
     size_t result;
 
-    std::string fn=std::string() + "F:/NL_TILE_MAP/" + env_value;
+    std::string fn=std::string() + "F:/REGION_FINDER/" + env_value;
 //    std::string fn=std::string() + "F:/PROJECT/" + env_value;
 //    std::string fn=std::string() + "G:/WEB/NL/" + env_value;
 
-
-// This all is in combination with the
-// https://github.com/HakkaTjakka/Leaflet-Minecraft-Region-Tiles-Map/blob/main/NL/index.html
-// Depending on the type of source files, what you want to do with them, how they are changed.
-// You can mix .png and/or .jpg on different manners. Like a .png is called, but a .jpg is returned.
-// But the principle works.... First Foundation. Build yourself a home.
     pFile = fopen ( fn.c_str(), "rb" );
     if (pFile!=NULL) {
         if ((strstr(fn.c_str(), ".jpg")) == NULL) {
@@ -112,11 +106,11 @@ int PNG() {
 //            log(zoom + "\n");
             if (!file_exists(zoom.c_str())) mkdir(zoom.c_str());
             fn_file=zoom+'/'+fn_file;
-//            log(fn_file + "\n");
+            log(fn_file + "\n");
             pFile = fopen ( fn_file.c_str(), "rb" );
             if (pFile==NULL) {
                 sf::Image m_image;
-                log(" -->> converting -->> CGI-BIN/");
+                log("Loading: " + fn + "\n");
                 if (m_image.loadFromFile(fn.c_str())==true) {
                     fn=fn_file;
                     m_image.saveToFile(fn.c_str());
@@ -124,8 +118,6 @@ int PNG() {
                     fn=std::string() + "F:/NL_TILE_MAP/skull_usd.jpg";
                 }
                 pFile = fopen ( fn.c_str(), "rb" );
-            } else {
-                fn=fn_file;
             }
         } //else {
 //            fclose(pFile);
@@ -135,6 +127,7 @@ int PNG() {
 //            pFile = fopen ( fn.c_str(), "rb" );
 //        }
     }
+
     if (pFile==NULL) {
         log(std::string() + "Can not open: " + fn + "\n");
         fn=std::string() + "F:/NL_TILE_MAP/skull.jpg";
