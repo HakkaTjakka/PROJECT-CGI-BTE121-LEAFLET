@@ -94,3 +94,20 @@ The result is nothing more (Google TOS) as a MOLD to build the BTE121 projection
 Editing one region file (512x512 meters/blocks) takes a while. Away from the 'flat' (sat) area's only the 3d area's would take age's building them from scratch. On tv i saw a likewise project where they have a founddation 3d model like this stuff. (GeoCraft).
 It looks very simular. (...)
 
+The cgi-bin construction now converts the stored .png into .jpg and keeps them for later use.
+Of course the REGION_FINDER can store them directly into .jpg's.
+The point is keeping the .png when zooming in. Then every pixel will be the real color top view pixel, instead of the blurred / compressed .jpg.
+The .png gives all pixels the exact (16) colors. The zoom (later) can show a single picture to find it's MC world coords, and/or the latlng for looking up on real gps data maps, and combining it with other data like postal codes, your own gps coors, interfacing with maps online etc.
+Next will be a online real time conversion from the region file(s) into 3d models for rendering on server side or client side.
+Rendering on the server side can be done with the MinecraftWorldEditor code, converting it in a 2d picture then show it online.
+I need to build some code to show it nice (Wavefront 3d) into the client browser. Then, when clicking a region tile you can get a real time 3d render on the client side as well. 
+You have idea's for options? Plz let me know i try to put them in.
+The whole thing could be used to synchronize building. When it comes together you will end up with a tool where you can select a region on the map.
+Then the node.js will download the nessasery octants from Google Earth 3d, converts them into .nbt files, then into MC region files. From all the 
+region files together a very large canvas can be made by rendering the to Wavefront 3d converted region files, and showing them like one big poster.
+These posters from Google 3d already exists but where 'flagged for abuse' on Google Drive i don't know why. I will put these posters on GitHub later,
+and also make a zoomable map of it. It shows several cities on 300dpi like 30 times 15 meters, in orthographic perspective meaning what is close is 
+as large as what is far away. Making it possible for endless renders of area's in perspective. Done also with the MinecraftWorldEdiot.
+Such a render of the whole of Holland would be possible, but i don't have enough harddrive space for all the tiles...
+For now...
+
