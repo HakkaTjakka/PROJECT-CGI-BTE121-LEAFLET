@@ -2120,7 +2120,7 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1634617691 source:f:\project_cgi_bte121\main.cpp
+1634626868 source:f:\project_cgi_bte121\main.cpp
 	<SFML\Graphics.hpp>
 	<cassert>
 	<stdio.h>
@@ -2132,6 +2132,8 @@
 	<iostream>
 	<io.h>
 	<fcntl.h>
+	<dirent.h>
+	<sys/stat.h>
 
 1582638338 f:\project_cgi_bte121\include\sfml\graphics.hpp
 	<SFML/Window.hpp>

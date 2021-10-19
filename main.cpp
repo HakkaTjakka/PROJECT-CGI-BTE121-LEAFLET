@@ -10,10 +10,16 @@
 #include <iostream>
 #include <io.h>
 #include <fcntl.h>
+#include <dirent.h>
+#include <sys/stat.h>
 using namespace std;
 
 void log(std::string tolog) {
     static FILE* out=fopen("texture.log","a");
+    if (tolog=="close") {
+        fclose(out);
+        exit(0);
+    }
     fputs(tolog.c_str(),out);
 }
 
@@ -45,13 +51,33 @@ static std::string GetFileName(const std::string& filepath)
     return "";
 }
 
+static std::string GetBaseDir(const std::string& filepath)
+{
+    if (filepath.find_last_of("/\\") != std::string::npos)
+        return filepath.substr(0, filepath.find_last_of("/\\"));
+    return "";
+}
+
+struct stat stat_buffer;
+
+bool file_exists(const char * filename)
+{
+    int exist = stat(filename,&stat_buffer);
+    if (exist==0) return true;
+    return false;
+}
+
 int PNG() {
     srand(time(0));
     _setmode( _fileno( stdout ), _O_BINARY );   //cuckoo's
     char* save_env = getenv("QUERY_STRING");   /* get environment variable */
     char env_value[strlen(save_env) + 1];
-    if (strlen(env_value) == 0) exit (2);
+    if (strlen(env_value) == 0) {
+        log(std::string() + "=empty\n");
+        exit (2);
+    }
     strcpy(env_value, save_env);    /* save environment variable */
+    log(std::string() + env_value + " -->> ");
 
     FILE * pFile;
     long lSize;
@@ -68,9 +94,23 @@ int PNG() {
             fclose(pFile);
             std::string fn_file=GetFileName(fn);
             if (fn_file.find_last_of(".") != std::string::npos) fn_file=fn_file.substr(0,fn_file.find_last_of("."))+".jpg";
+//index.html:   return "http://83.83.222.154/cgi-bin/texture.cgi?" + coords.z + "/" + mc_x + "/" + mc_y + "/r." + coords.x + "." + coords.y + ".png";
+//            log(fn + "\n");
+            std::string zoom=GetBaseDir(fn); //y dir
+//            log(zoom + "\n");
+            zoom=GetBaseDir(zoom); //x dir
+//            log(zoom + "\n");
+            zoom=GetBaseDir(zoom); //zoomfactor dir
+//            log(zoom + "\n");
+            zoom=GetFileName(zoom);
+//            log(zoom + "\n");
+            if (!file_exists(zoom.c_str())) mkdir(zoom.c_str());
+            fn_file=zoom+'/'+fn_file;
+//            log(fn_file + "\n");
             pFile = fopen ( fn_file.c_str(), "rb" );
             if (pFile==NULL) {
                 sf::Image m_image;
+                log(" -->> converting -->> ");
                 if (m_image.loadFromFile(fn.c_str())==true) {
                     fn=fn_file;
                     m_image.saveToFile(fn.c_str());
@@ -78,8 +118,16 @@ int PNG() {
                     fn=std::string() + "F:/NL_TILE_MAP/skull_usd.jpg";
                 }
                 pFile = fopen ( fn.c_str(), "rb" );
+            } else {
+                fn=fn_file;
             }
-        }
+        } //else {
+//            fclose(pFile);
+//            std::string fn_file=GetFileName(fn);
+//            if (fn_file.find_last_of(".") != std::string::npos) fn_file=fn_file.substr(0,fn_file.find_last_of("."))+".jpg";
+//            fn=fn_file;
+//            pFile = fopen ( fn.c_str(), "rb" );
+//        }
     }
 
     if (pFile==NULL) {
