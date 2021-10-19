@@ -1,6 +1,10 @@
 # PROJECT CGI BTE121 LEAFLET
  CGI-BIN CONSTRUCTION FOR LEAFLET SHOWING MINECRAFT BTE121 PROJECTION TILES
 
+Real time work in progress server to try yourself: http://83.83.222.154/nl/
+
+Leave an issue if it works on your client site, plz.
+
 Used in combination with:
 
    https://github.com/HakkaTjakka/Leaflet-Minecraft-Region-Tiles-Map and
