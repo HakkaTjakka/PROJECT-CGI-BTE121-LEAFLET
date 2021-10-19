@@ -83,4 +83,14 @@ Latest change:
 
 When loading .png file through cgb-bin, its converted into .jpg, and stored in a zoom dir (1-11) in the cgi-bin dir of xampp.
 Loaded from there.
+
 When next time same .png file requested the converted .jpg comes from these dirs.
+Repo's will be combined later. For now you have to sort it out for yourself. Like directories in index.html server c/c++ code. It involvels many aspects. 
+Compiler (seh-mingw), Codeblocks, C/C++, Javascript, node.js, Python, Minecrafting, BTE121 projection, conversion into Cubic Chunks, as well coding 
+several conversions from 3d Wavefront to .nbt files (same structure as MC .mca region files), html, cgi-bin interfacing c/c++.
+If you need (a) manual(s) on stuff just let me know. I write them.
+Its all preliminary experimental prototyping and my goal is to support the BTE121 for now. 
+The result is nothing more (Google TOS) as a MOLD to build the BTE121 projection world. 
+Editing one region file (512x512 meters/blocks) takes a while. Away from the 'flat' (sat) area's only the 3d area's would take age's building them from scratch. On tv i saw a likewise project where they have a founddation 3d model like this stuff. (GeoCraft).
+It looks very simular. (...)
+
