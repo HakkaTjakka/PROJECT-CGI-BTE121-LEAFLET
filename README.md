@@ -79,3 +79,8 @@ Wich can by ANYTHING that you can send over the web. You have a c/c++ html/Javas
 If you need help (then things go very quick) msg me plz. I'm gladly willing to help and ask (Minecraft fans) to join this project(s).
 
 
+Latest change:
+
+When loading .png file through cgb-bin, its converted into .jpg, and stored in a zoom dir (1-11) in the cgi-bin dir of xampp.
+Loaded from there.
+When next time same .png file requested the converted .jpg comes from these dirs.
