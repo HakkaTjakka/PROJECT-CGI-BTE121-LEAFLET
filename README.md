@@ -59,6 +59,9 @@ the Leaflet script for showing zoomable map tiles, the MinecraftWorldEditor prog
 Google Earth 3d data downloaded with the Node.js script from the MinecraftWorldEditor repo (earth), converted to voxels, etc.
 
 Possible: Using GPU shaders for showing only the parts of it that will show up in the tiles. Therefore only the (zoomed in, real time generated gpu shader output)
+
+I know the repo(s) are not organized. Its called 'junk code'.
+But the 'junk' works, in right configurated. 
 displayed area will be rendered. 
 The project.exe now converts the .png files from the REGION_FILES to .jpg with SFML functions. And places them into the cgi-bin dir.
 Then, when needed again they don't have to be converted. Its meant for bandwith/speed, but also for creating images on the fly and displaying them in a website.
